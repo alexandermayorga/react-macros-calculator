@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import NumberInput from './NumberInput';
 import RadioInput from './RadioInput';
 import Summary from './Summary';
+import RangeInput from './RangeInput';
 
 function App() {
    const [sex, setSex] = useState()
@@ -18,8 +19,7 @@ function App() {
    const [fatGrams, setFatGrams] = useState(0)
    const [carbsGrams, setCarbsGrams] = useState(0)
 
-
-
+   //On Mount
    useEffect(() => {
       // const data = { sex, weight, height, age, unit, bodyFatPercentage, activityMultiplier, proteinIntakeRatio, fatIntakePercentage, bmr, proteinGrams, fatGrams, carbsGrams }
       // const dataJSON = JSON.stringify(data)
@@ -61,8 +61,6 @@ function App() {
       const heightInUnit = (unit === "imperial" ? height * 30.48 : height)
 
       const bmr = (10 * weightInUnit + 6.25 * heightInUnit - 5 * age + (sex === "male" ? 5 : - 161)) * activityMultiplier;
-
-
 
       setBmr(bmr)
 
@@ -143,19 +141,19 @@ function App() {
                            </div>
 
                         </div>
-                        <div className="form-group">
-                           <label>Activity Multiplier <small> ( range: 1.2 to 2.2 )</small></label>
-                           <NumberInput 
-                              changed={(e) => setActivityMultiplier(e.target.value)} 
-                              value={activityMultiplier} 
-                              step={0.1} 
-                              min={1.2}
-                              max={2.2}
-                           />
-                           <span className="help-block">
-                              Sedentary to Highly Active LifeStyle
-                           </span>
-                        </div>
+
+                        <RangeInput
+                           name="activityMultiplier"
+                           label="Activity Multiplier"
+                           labelSmall=" ( range: 1.2 to 2.2 )"
+                           min={1.2}
+                           max={2.2}
+                           step={0.1}
+                           value={activityMultiplier}
+                           helpBlock="Sedentary to Highly Active LifeStyle"
+                           onChange={(e) => setActivityMultiplier(e.target.value)}
+                        />
+                        
 
                         <div className="form-group">
                            <label>BMR (Maintenance Calories)</label>
@@ -173,18 +171,17 @@ function App() {
                            <NumberInput changed={(e) => setBodyFatPercentage(e.target.value)} value={bodyFatPercentage} />
                         </div>
 
-                        <div className="form-group">
-                           <label>Protein Ratio <small>( range: 1.2 to 1.6 )</small></label>
-                           <div className="small"></div>
-                           <NumberInput
-                              changed={(e) => setProteinIntakeRatio(e.target.value)}
-                              value={proteinIntakeRatio}
-                              step={0.1}
-                              min={1.2}
-                              max={1.6}
-                           />
-                           <span className="help-block">Closer to 1.6 the leaner you are</span>
-                        </div>
+                        <RangeInput
+                           name="proteinRatio"
+                           label="Protein Ratio"
+                           labelSmall=" ( range: 1.2 to 1.6 )"
+                           min={1.2}
+                           max={1.6}
+                           step={0.1}
+                           value={proteinIntakeRatio}
+                           helpBlock="Closer to 1.6 the leaner you are"
+                           onChange={(e) => setProteinIntakeRatio(e.target.value)}
+                        />
 
                         <div className="form-group">
                            <label>Fat Intake Percentage</label>

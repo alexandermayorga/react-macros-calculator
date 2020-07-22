@@ -9,7 +9,37 @@ export default function Summary({ proteinGrams,fatGrams,carbsGrams,bmr }) {
                 <hr />
             </div>
 
-            <div className="col-sm-4">
+
+            <div className="col-sm-12">
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th className="text-center">Grams</th>
+                            <th className="text-center">Calories</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Protein</th>
+                            <td className="text-center">{Math.round(proteinGrams)} gr</td>
+                            <td className="text-center">{Math.round(proteinGrams * 4)} cal</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Fat</th>
+                            <td className="text-center">{Math.round(fatGrams)} gr</td>
+                            <td className="text-center">{Math.round(fatGrams * 9)} cal</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Carb</th>
+                            <td className="text-center">{Math.round(carbsGrams)} gr</td>
+                            <td className="text-center">{Math.round(carbsGrams * 4)} cal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {/* <div className="col-sm-4">
                 <div className="text-center">
                     <div>Protein - {Math.round(proteinGrams)}gr - {Math.round(proteinGrams * 4)} cal</div>
                 </div>
@@ -23,7 +53,7 @@ export default function Summary({ proteinGrams,fatGrams,carbsGrams,bmr }) {
                 <div className="text-center">
                     <div>Carbs - {Math.round(carbsGrams)}gr - {Math.round(carbsGrams * 4)} cal</div><br />
                 </div>
-            </div>
+            </div> */}
 
             <div className="col-sm-12">
 
