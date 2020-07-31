@@ -15,14 +15,24 @@ export default function RangeInput(props) {
 
     return (
         <div className="form-group">
-            <label htmlFor={props.name}>
-                {props.label}
-                {
-                    props.labelSmall
-                    &&
-                    <small>{props.labelSmall}</small>
-                }
-            </label>
+            <div className="row">
+                <div className="col-xs-9">
+                    <label htmlFor={props.name}>
+                        {props.label}
+                        {
+                            props.labelSmall
+                            &&
+                            <small>{props.labelSmall}</small>
+                        }
+                    </label>
+                </div>
+                <div className="col-xs-3">
+                    <div className="h4 text-right">
+                        <span className="label label-default">{props.value}</span>
+                    </div>
+                </div>
+            </div>
+
             <input
                 list={`tickmarks_${props.name}`}
                 type="range" 
